@@ -1,8 +1,8 @@
-
+import MainHome from "./main_home";
 export default function Home() {
   return (
     <div>
-      Home ádasdasdasdasdd ngúauduasdasdasdsadasdasd
+     <MainHome/>
       </div>
   );
 }
