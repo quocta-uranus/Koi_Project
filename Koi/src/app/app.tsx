@@ -1,21 +1,23 @@
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Home from 'app/home';
-import Layout from 'components/layout/layout.tsx';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "app/home";
+import Layout from "components/layout/layout.tsx";
+import Login from "./login";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route
+      <Route
           path="/"
           element={
             <Layout>
-              <Home/>
+              <Home />
             </Layout>
           }
         />
-       
-      </Routes>
+            <Route path="/login" element={<Login/>}/>
+            
+          </Routes>
     </Router>
   );
 }
