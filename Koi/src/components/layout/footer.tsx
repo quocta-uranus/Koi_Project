@@ -2,7 +2,6 @@ import Logo from "assets/images/Aquascapes-Badge.webp";
 import titleLogo from "assets/images/White-Logo.webp";
 import facebookIcon from "assets/icons/facebookIcon.svg";
 import instagramIcon from "assets/icons/instagramIcon.svg";
-import dumbbell from "assets/icons/dumbblell.svg";
 import Typography from "components/typography";
 import location from "assets/icons/location.svg";
 import phone from "assets/icons/call.svg";
@@ -69,7 +68,7 @@ const Footer = () => {
               <div className="flex flex-col gap-[10px]">
                 {section.items.map((item, key) => (
                   <div className="flex gap-[10px] cursor-pointer" key={`item-${key}`}>
-                    <img src={dumbbell} alt="" className="my-auto"/>
+                    
                     <Typography variant={"medium"} color={"gray-A0"}>{item.text}</Typography>
                   </div>
                 ))}
