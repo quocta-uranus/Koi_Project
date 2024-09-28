@@ -2,10 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Open Sans";
+  src: url("./fonts//OpenSans-VariableFont_wdth\,wght.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
 @layer base {
   html {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+  }
+  body {
+    font-family: "Open Sans", sans-serif;
   }
 
   @keyframes slide {

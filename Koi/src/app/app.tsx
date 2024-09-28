@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <Routes>
-      <Route
+        <Route
           path="/"
           element={
             <Layout>
@@ -15,9 +15,8 @@ function App() {
             </Layout>
           }
         />
-            <Route path="/login" element={<Login/>}/>
-            
-          </Routes>
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </Router>
   );
 }
