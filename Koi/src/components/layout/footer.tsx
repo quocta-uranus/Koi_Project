@@ -32,7 +32,7 @@ const sections = [
 const contact = {
   title: "Contact",
   items: [
-    {icon: location, text: "Địa chỉ: 172 Cù Chính Lan, Q. Thanh Khê, TP. Đà Nẵng"},
+    {icon: location, text: "Address: FPT University HCM"},
     {icon: phone, text: "Hotline: 0707.65.7777"},
   ],
 }
