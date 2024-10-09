@@ -21,6 +21,7 @@ const LoginPage = () => {
     password: "",
   });
   const handleLogin = async () => {
+    navigate("/"); 
     
         
         const response = await fetch("http://localhost:8080/api/login", {
@@ -51,7 +52,6 @@ const LoginPage = () => {
             }, 2000);
         } 
 };
-
   // Explicitly typing 'e' as React.ChangeEvent<HTMLInputElement>
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

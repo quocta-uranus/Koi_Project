@@ -3,12 +3,19 @@ import { menus, Menu } from "components/layout/menus";
 import Typography from "components/typography/index";
 import Logo from "assets/images/Logo.png";
 import menu from "assets/icons/Menu.svg";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const [token, setToken] = useState<string | null>(null);
-
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate("/login")
+    
+    
+}
   const handleScrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -20,7 +27,7 @@ const Header = () => {
   };
   useEffect(() => {
     if (typeof window !== "undefined" && window.localStorage) {
-     const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token");
       setToken(token);
     }
   }, []);
@@ -112,17 +119,18 @@ const Header = () => {
       </div>
       {token ? (
         <div>
-        <Typography>layten</Typography>
-      </div>
-      ) :
-      (
-        
+          <Typography>layten</Typography>
+          <Typography onClick={handleLogout} className="flex gap-[10px] w-full min-w-[273px] cursor-pointer whitespace-nowrap bg-transparent px-4 py-2 text-sm text-left font-normal pointer-events-auto text-neutral-700 hover:bg-[#C8EDFF] active:text-neutral-800 active:bg-neutral-100 focus:bg-neutral-100 focus:text-neutral-800 focus:outline-none active:no-underline dark:text-neutral-200 dark:hover:bg-neutral-600 dark:focus:bg-neutral-600 dark:active:bg-neutral-600">
+            Log out
+          </Typography>
+        </div>
+      ) : (
         <a className="  " href={`/login`}>
-        <button className=" mt-[10px] text-black w-[120px] h-[40px] bg-transparent rounded-md  border-black border-[1px] ">
-          {" "}
-          Log in
-        </button>
-      </a>
+          <button className=" mt-[10px] text-black w-[120px] h-[40px] bg-transparent rounded-md  border-black border-[1px] ">
+            {" "}
+            Log in
+          </button>
+        </a>
       )}
 
       <div className="relative desktop:hidden">
