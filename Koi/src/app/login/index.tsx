@@ -3,8 +3,13 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import "../../index.css";
 import background from "../../assets/videos/video-background.mp4";
+import { useNavigate } from "react-router-dom";
+
 
 const LoginPage = () => {
+
+  const navigate = useNavigate();
+  
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -37,6 +42,9 @@ const LoginPage = () => {
                     "token",
                     data.authentication.sessionToken
                 );
+                navigate("/"); 
+
+                
                
 
                
@@ -98,6 +106,8 @@ const LoginPage = () => {
                 "token",
                 data.authentication.sessionToken
             );      
+            navigate("/"); 
+
         }, 2000);
     } 
     
@@ -199,7 +209,7 @@ const LoginPage = () => {
               onClick={()=>{
                 handleLogin
               }}
-              className={`w-full bg-green text-white font-semibold py-2 px-4 rounded-md hover:bg-blue focus:outline-none focus:ring-2 focus:ring-blue focus:ring-opacity-50 transition-colors ${
+              className={`w-full bg-green text-black bg-[#076839] font-semibold py-2 px-4 rounded-md hover:bg-[#5C813F] focus:outline-none focus:ring-2 focus:ring-blue focus:ring-opacity-50 transition-colors ${
                 loading ? "opacity-75 cursor-not-allowed" : ""
               }`}
             >
