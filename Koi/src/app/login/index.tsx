@@ -144,7 +144,7 @@ const LoginPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full bg-green text-white font-semibold py-2 px-4 rounded-md hover:bg-blue focus:outline-none focus:ring-2 focus:ring-blue focus:ring-opacity-50 transition-colors ${
+              className={`w-full bg-[#076839] font-semibold py-2 px-4 rounded-md hover:bg-blue focus:outline-none hover:bg-[#6B9053] focus:ring-2 focus:ring-blue focus:ring-opacity-50 transition-colors ${
                 loading ? "opacity-75 cursor-not-allowed" : ""
               }`}
             >
