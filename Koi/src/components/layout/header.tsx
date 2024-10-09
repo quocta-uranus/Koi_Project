@@ -8,7 +8,8 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const [token, setToken] = useState<string | null>(null);
-
+  //const [token, setToken] = useState<string | null>(null);
+const [name, setName] = useState<string | null>(null);
   const handleScrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -22,6 +23,8 @@ const Header = () => {
     if (typeof window !== "undefined" && window.localStorage) {
      const token = localStorage.getItem("token");
       setToken(token);
+      const name= localStorage.getItem("name");
+      setName(name)
     }
   }, []);
   console.log(token);
@@ -112,7 +115,7 @@ const Header = () => {
       </div>
       {token ? (
         <div>
-        <Typography>layten</Typography>
+        <Typography>{name}</Typography>
       </div>
       ) :
       (

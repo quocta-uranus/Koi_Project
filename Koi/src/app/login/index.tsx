@@ -20,37 +20,8 @@ const LoginPage = () => {
     username: "",
     password: "",
   });
-  const handleLogin = async () => {
-    
-        
-        const response = await fetch("http://localhost:8080/api/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email: "quoc@gmail.com",
-                password: "123456",
-            }),
-        });
-       
-        if (response.ok) {
-            setTimeout(async () => {
-                const data = await response.json();
-                console.info(data)
-                localStorage.setItem(
-                    "token",
-                    data.authentication.sessionToken
-                );
-                navigate("/"); 
-
-                
-               
-
-               
-            }, 2000);
-        } 
-};
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
   // Explicitly typing 'e' as React.ChangeEvent<HTMLInputElement>
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -87,14 +58,15 @@ const LoginPage = () => {
       setLoading(true);
       // Simulating API call
        
+
       const response = await fetch("http://localhost:8080/api/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            email: "quoc@gmail.com",
-            password: "123456",
+            email:   formData.username,
+            password: formData.password,
         }),
     });
    
@@ -104,19 +76,27 @@ const LoginPage = () => {
             console.info(data)
             localStorage.setItem(
                 "token",
-                data.authentication.sessionToken
-            );      
+                data.token
+            );    
+            console.log(data.token)  
             navigate("/"); 
-
+            localStorage.setItem("name", data.name);
+            console.log(data.name)
         }, 2000);
-    } 
-    
 
-      setTimeout(() => {
-        setLoading(false);
-        alert("Login successful!");
-      }, 2000);
-    }
+        setTimeout(() => {
+          setLoading(false);
+          alert("Login successful!");
+        }, 2000);
+      }
+     
+    else {
+    setTimeout(() => {
+      setLoading(false);
+      alert("Login fail!");
+    }, 2000);
+  }
+}
   };
 
   return (
@@ -206,9 +186,6 @@ const LoginPage = () => {
             <button
               type="submit"
               disabled={loading}
-              onClick={()=>{
-                handleLogin
-              }}
               className={`w-full bg-green text-black bg-[#076839] font-semibold py-2 px-4 rounded-md hover:bg-[#5C813F] focus:outline-none focus:ring-2 focus:ring-blue focus:ring-opacity-50 transition-colors ${
                 loading ? "opacity-75 cursor-not-allowed" : ""
               }`}
