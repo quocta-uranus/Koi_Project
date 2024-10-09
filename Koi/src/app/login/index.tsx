@@ -15,6 +15,34 @@ const LoginPage = () => {
     username: "",
     password: "",
   });
+  const handleLogin = async () => {
+    
+        
+        const response = await fetch("http://localhost:8080/api/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email: "quoc@gmail.com",
+                password: "123456",
+            }),
+        });
+       
+        if (response.ok) {
+            setTimeout(async () => {
+                const data = await response.json();
+                console.info(data)
+                localStorage.setItem(
+                    "token",
+                    data.authentication.sessionToken
+                );
+               
+
+               
+            }, 2000);
+        } 
+};
 
   // Explicitly typing 'e' as React.ChangeEvent<HTMLInputElement>
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,11 +73,35 @@ const LoginPage = () => {
   };
 
   // Explicitly typing 'e' as React.FormEvent<HTMLFormElement>
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
       setLoading(true);
       // Simulating API call
+       
+      const response = await fetch("http://localhost:8080/api/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            email: "quoc@gmail.com",
+            password: "123456",
+        }),
+    });
+   
+    if (response.ok) {
+        setTimeout(async () => {
+            const data = await response.json();
+            console.info(data)
+            localStorage.setItem(
+                "token",
+                data.authentication.sessionToken
+            );      
+        }, 2000);
+    } 
+    
+
       setTimeout(() => {
         setLoading(false);
         alert("Login successful!");
@@ -144,6 +196,9 @@ const LoginPage = () => {
             <button
               type="submit"
               disabled={loading}
+              onClick={()=>{
+                handleLogin
+              }}
               className={`w-full bg-green text-white font-semibold py-2 px-4 rounded-md hover:bg-blue focus:outline-none focus:ring-2 focus:ring-blue focus:ring-opacity-50 transition-colors ${
                 loading ? "opacity-75 cursor-not-allowed" : ""
               }`}
